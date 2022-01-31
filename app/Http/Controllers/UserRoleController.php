@@ -101,11 +101,15 @@ public function updateUserRole( Request $request ) {
 
 //*---------- Update Data From Roleform -----------
 public function permission( Request $request ) {  
-    $permission = DB::table( 'permissions' )->get();
-    $userRole = DB::table( 'roles' )->get();
-    $rolestatus = DB::table( 'role_has_permissions' )->get();
-    
-    return view( 'backend.admin.subadmin.permision' )->with( [ 'permission' => $permission, 'userRole' => $userRole , 'rolestatus' => $rolestatus] );
+    try { 
+        $permission = DB::table( 'permissions' )->get();
+        $userRole = DB::table( 'roles' )->get();
+        $rolestatus = DB::table( 'role_has_permissions' )->get();
+        return view( 'backend.admin.subadmin.permision' )->with( [ 'permission' => $permission, 'userRole' => $userRole , 'rolestatus' => $rolestatus] );
+    } catch ( Exception $e ) {
+        return response()->json( 'false' );
+    }
+   
 }
 
 // ------------- Add Permision --------------

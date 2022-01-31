@@ -1,11 +1,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-   
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <!-- Sidebar Menu -->
     <?php  $user = Auth::user(); if($user != ""){   if($user->image != ""){?>
-    
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="{{asset('admin/img/'.Auth::user()->image)}}" class="img-circle elevation-2" style="width:60px ; height:50px" alt="User Image">
