@@ -1,0 +1,32 @@
+.content-wrapper { background: white;}
+.add-bttn{ padding: 5px 40px;}
+/*---------------- Form CSS -----------------------*/
+#MyForm-InsertData{
+    display: none;
+    padding: 20px;
+    margin-left: 590px;
+}  
+/* -------- For from make sticky ---------- */
+div.sticky-form{
+    position: -webkit-sticky;
+    position: absolute;
+    width: 30%;
+    top: 180;
+    padding: 10px;
+  }
+/*----- Form inputs Fields error message -----*/
+.form-field.error input { border-color: red; }
+.form-field small { color: red;}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+section#main-content {
+    margin-top: 15%;
+}
