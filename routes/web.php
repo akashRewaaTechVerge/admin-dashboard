@@ -69,9 +69,7 @@ Route::get('userPermision', 'App\Http\Controllers\UserRoleController@addPermisio
 Route::get('createPermision', 'App\Http\Controllers\UserRoleController@addPermision')->name('createPermision');
 // ---------------------[' GivePermision '] ---------------------------------
 Route::get('givePermision', 'App\Http\Controllers\UserRoleController@givePermision')->name('givePermision');
-
-// Route::group(['middleware' => ['role:admin']], function () {
-  
+ 
 // ------------------------[' For Analytics '] --------------------------
  Route::get('/analytics', 'App\Http\Controllers\AdminController@analytics')->name('analytics');
  // ------------------------[' For Org '] -------------------------------
@@ -92,5 +90,9 @@ Route::get('givePermision', 'App\Http\Controllers\UserRoleController@givePermisi
  Route::get('editor', 'App\Http\Controllers\UserRoleController@Bikes')->name('editor');
 // ------------------------[' For Bikes '] -------------------------------
 Route::get('bikes', 'App\Http\Controllers\UserRoleController@Bikes')->name('bikes');
+
+// ------------------------[' For GeoFance '] -------------------------------
+Route::get('geofence', 'App\Http\Controllers\HomeController@geoFence')->name('geofence');
+Route::get('/store','App\Http\Controllers\HomeController@store')->name('store');
 
  

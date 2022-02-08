@@ -28,29 +28,33 @@ class HomeController extends Controller {
     */
 
     public function index() {
-        echo 2;
-        exit;
-
         $user = User::all( 'name', 'id' );
-
         $adminData = DB::table( 'users' )->get();
         $userRole = DB::table( 'roles' )->get();
-
         if ( Auth::check() ) {
-
             return view( 'backend.admin.dashboard.mainIndex' )->with( [ 'user' => $user, 'adminData' => $adminData, 'userRole' => $userRole ] );
-
         } else {
-
             return redirect::to( 'user-login' )->withSuccess( 'Oopps! You do not have access' );
-
         }
+    }
 
-        // $adminData = DB::table( 'users' )->get();
-        // request()->session()->get( 'email' );
 
-        // return view( 'backend.admin.dashboard.mainIndex' )->with( 'adminData', $adminData );
 
+    // ------------------ ['For GeoFence'] -----------------------
+    public function geoFence() {
+
+        return view( 'backend.admin.subadmin.geofence' );
+
+    }
+
+
+     public function store( Request $request ) {
+
+        Location::create( [
+            'latitude'=>$request->lat,
+            'longitude'=>$request->lng
+        ] );
+        return view( 'demo' );
     }
 
     // *********** End Class ***********

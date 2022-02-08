@@ -17,9 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Contracts\DataTable;
 use DataTables; 
 use Exception;
- 
 use Spatie\Permission\Traits\HasPermissions;
- 
 use Spatie\Permission\Traits\HasRoles;
 use givePermissionTo;
 

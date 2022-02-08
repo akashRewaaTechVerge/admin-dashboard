@@ -22,33 +22,19 @@ use givePermissionTo;
 use App\Models\model_has_permissions;
 
 class UserRoleController extends Controller {
-    // --------------------- [ Role user Add ] ---------------------
-    public function userRoleAdd( Request $request ) {
-        try {
-            $duplicatemail = DB::table( 'userrole' )->where( 'email', $request->email )->get();
-            if ( count( $duplicatemail ) == 0 ) {
-                $user =  auth()->user();
-                $users = $user->assignRole("$request->userrole");
-                $addRoleData = DB::select( "INSERT INTO userrole(fname, lname,contact,email,password,role )VALUES('$request->firstname','$request->lastusername','$request->contact','$request->email','$request->password','$request->userrole')" );
-                return response()->json( [ 'addRoleData' => $addRoleData ] );
-            }
-        } catch ( Exception $e ) {
-            return response()->json( 'faild' );
-        }
-    }
+    
     // *--------------- Show UserRole Page  ---------------
-
     public function index( Request $request ) {
         try {
             $user = Auth::user();
             return view( 'backend.admin.subadmin.addRole' )->with( [ 'user' => $user ] );
             return response()->json( [ 'user' => $user ] );
-        } catch ( Exception $e ) {
+        } catch ( Throwable $e ) {
             return response()->json( 'faild' );
         }
     }
-    //*------------- Get Data In RoleTable ---------------
 
+    //*------------- Get Data In RoleTable ---------------
     public function getUserRoles( Request $request, User $user ) {
         try {
             $data = DB::table( 'roles' )->get();
@@ -56,12 +42,11 @@ class UserRoleController extends Controller {
             ->addIndexColumn()
             ->addColumn( 'action', function( $row ) {
             })->rawColumns( [ 'action' ] )->make( true );
-
-        // return response()->json( [ 'data' => $data ] );
-    } catch ( Exception $e ) {
-        return response()->json( 'false' );
+            // return response()->json( [ 'data' => $data ] );
+        } catch ( Exception $e ) {
+            return response()->json( 'false' );
+        }
     }
-}
 
 //*------------- Insert Data from Roleform  ---------------
 public function insertUserRole( Request $request ) { 
@@ -109,7 +94,6 @@ public function permission( Request $request ) {
     } catch ( Exception $e ) {
         return response()->json( 'false' );
     }
-   
 }
 
 // ------------- Add Permision --------------
@@ -150,7 +134,7 @@ public function addPermision( Request $request ) {
          }
     }
   
-    // For Demo 
+    // -------------------[' For Demo '] ------------
     public function Demo(){
         return view('backend.admin.subadmin.demo');
     }

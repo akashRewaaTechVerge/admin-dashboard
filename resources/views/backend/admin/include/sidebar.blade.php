@@ -117,6 +117,15 @@
               </a>
             </li>  
           @endcan
+          @can('geofence') 
+            <li class="nav-item {{ (request()->is('geofence*')) ? 'active menu-open' : '' }} " >          
+              <a href="{{route('geofence')}}" class="nav-link {{ (request()->is('geofence*')) ||  (request()->is('geofence*')) ? 'active' : '' }}">
+                  <i class="fa fa-globe"></i>
+                  <p> GeoFence </p>
+              </a>
+            </li>  
+          @endcan
+
 
       </ul>
     </nav>

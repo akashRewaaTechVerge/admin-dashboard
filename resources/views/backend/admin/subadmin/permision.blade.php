@@ -5,7 +5,6 @@
  <!-- Main content -->
     <?php  function searchPermissionInArray($permissionId , $roleId , $rolestatus){
       foreach ( $rolestatus as $element ) { 
-          // echo $element->permission_id , $element->role_id; 
           if ( $permissionId == $element->permission_id && $roleId == $element->role_id ) {
               return $element;
           }
@@ -30,7 +29,6 @@
                 @endif 
                 <div id="permisionTable"> 
                   <div class="table-responsive mt-12" id="permisiontable">
-                    <!-- <table id="permision-table" class="align-middle mb-0 table table-border" cellspacing="0"  width="100%"> -->
                     <table id="permision-table">    
                       <thead>
                         <th>permisions</th>
@@ -40,34 +38,32 @@
                         </thead>
                         <tbody id="showtables">
                             @foreach($permission as $permisions)
-                             <tr>
+                              <tr>
                                 <td><h6>{{ $permisions->name }}</h6></td> 
-                                  @foreach($userRole as $userRoles)
-                                <td>
-                                   <?php $myPermission =  searchPermissionInArray( $permisions->id , $userRoles->id , $rolestatus); 
-                                   $type = gettype($myPermission);
-                                    if($type != "boolean"){  
-                                   ?>
-                                    <label class="switch">
-                                      <input data-id="{{$permisions->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" id="roleid" value="{{ $userRoles->id }}" data="InActive" {{ $myPermission->status ? 'checked' : ''}} >
-                                      <span class="slider round"></span>
-                                    <?php } else{   ?> 
+                                @foreach($userRole as $userRoles)
+                                  <td>
+                                     <?php $myPermission =  searchPermissionInArray( $permisions->id , $userRoles->id , $rolestatus); 
+                                     $type = gettype($myPermission);
+                                      if($type != "boolean"){  
+                                     ?>
                                       <label class="switch">
-                                      <input data-id="{{$permisions->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" id="roleid" value="{{ $userRoles->id }}" data="InActive">
-                                      <span class="slider round"></span>
-                                  </label>
-
-                                    <?php } ?>
-
-                                </td>    
-                                  @endforeach 
-                            </tr>
+                                        <input data-id="{{$permisions->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" id="roleid" value="{{ $userRoles->id }}" data="InActive" {{ $myPermission->status ? 'checked' : ''}} >
+                                        <span class="slider round"></span>
+                                      </label>  
+                                      <?php } else{   ?> 
+                                        <label class="switch">
+                                          <input data-id="{{$permisions->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" id="roleid" value="{{ $userRoles->id }}" data="InActive">
+                                          <span class="slider round"></span>
+                                       </label>
+                                      <?php } ?>
+                                  </td>    
+                                @endforeach 
+                              </tr>
                             @endforeach 
                         </tbody>
                     </table>
                   </div> 
                 </div>
-
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <strong>Whoops!</strong> There were some problems with your input.<br><br>

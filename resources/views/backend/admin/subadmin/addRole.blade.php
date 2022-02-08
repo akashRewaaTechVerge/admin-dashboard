@@ -16,8 +16,8 @@
                 <div class="mt-5" id="animateDataTable">
                     <div class="card">
                         <div class="card-body">
-                            <table id="role-table" class="align-middle mb-0 table table-border  " cellspacing="0"
-                                width="100%">
+                            <table id="role-table" class="align-middle mb-0 table table-border" 
+                                cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
